@@ -1,3 +1,4 @@
+#!/bin/bash
 fun()
 {
     echo "Hi this is sample function program 1"
@@ -8,3 +9,5 @@ fun()
     sleep 5
     echo "Hi this is sample function program 4"
 }
+
+fun
