@@ -16,4 +16,4 @@ stat()
 }
 
 stat
-sample
+fun
