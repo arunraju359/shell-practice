@@ -10,4 +10,3 @@ fun()
     echo "Hi this is sample function program 4"
 }
 
-fun
