@@ -10,9 +10,8 @@ fun()
     echo "Hi this is sample function program 4"
 }
 
-stat()
-{
-    echo "The load average is : $(uptime | awk -F : '{print $2})"
+stat(){
+    echo "The load average is : $(uptime | awk -F : '{print $2}')"
 }
 
 stat
