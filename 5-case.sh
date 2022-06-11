@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ACION=$1
+ACTION=$1
 
 case $ACTION in
     start)
@@ -11,9 +11,6 @@ case $ACTION in
     ;;
     *)
     echo "print valid input"
-    ;;
-
-
-
+    
 
 esac
