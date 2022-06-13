@@ -32,6 +32,6 @@ systemctl start httpd
 stat $?
 
 echo -n "Installing Java : "
-yum install java >>& /tmp/stack.logs
+yum install java &>> /tmp/stack.logs
 stat $?
 
