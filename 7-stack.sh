@@ -9,7 +9,7 @@ FUSER=student
 APACHE_TOMCAT="https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.81/bin/apache-tomcat-8.5.81.tar.gz"
 WAR_URL="https://devops-cloudcareers.s3.ap-south-1.amazonaws.com/student.war"
 JAR_URL="https://devops-cloudcareers.s3.ap-south-1.amazonaws.com/mysql-connector.jar"
-SCHEMA="https://devops-cloudcareers.s3.ap-south-1.amazonaws.com/studentapp-ui-proj.sq"
+SCHEMA="https://devops-cloudcareers.s3.ap-south-1.amazonaws.com/studentapp-ui-proj.sql"
 
 
 if [ "$ID" -ne 0 ]; then
