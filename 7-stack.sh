@@ -1,5 +1,9 @@
 #!/bin/bash
 ID=$(id -u)
+LOGS=/tmp/stack.logs
+INDEX_URL="https://devops-cloudcareers.s3.ap-south-1.amazonaws.com/index.html"
+FUSER=student
+
 if [ "$ID" -ne 0 ]; then
     echo -e "\e[31m You need to perform the operation as a root user \e[0m"
     exit 1
@@ -14,7 +18,7 @@ fi
 
 }
 echo -n "Installing Httpd : "
-yum install httpd &> /tmp/stack.logs
+yum install httpd &> $LOGS
 stat $?
 
 echo -n "Update the reverse Proxy Congiguration : "
@@ -23,7 +27,7 @@ ProxyPassReverse "/student"  "http://APP-SERVER-IPADDRESS:8080/student"' > /etc/
 stat $?
 
 echo -n "Downloading the index.html file : " 
-curl -s https://devops-cloudcareers.s3.ap-south-1.amazonaws.com/index.html -o /var/www/html/index.html &>> /tmp/stack.logs
+curl -s $INDEX_URL -o /var/www/html/index.html &>> $LOGS
 stat $?
 
 echo -n "Starting the HTTPD service : "
@@ -32,10 +36,16 @@ systemctl start httpd
 stat $?
 
 echo -n "Installing Java : "
-yum install java &>> /tmp/stack.logs
+yum install java &>> $LOGS
 stat $?
 
 echo -n "Creating the functional user : "
-useradd student &>> /tmp/stack.logs
-stat $?
+id $FUSER &>> $LOGS
+if [ $? -eq 0 ]; then 
+   echo -e "\e[33m Skipping \e[0m" 
+else 
+   useradd $FUSER &>> $LOG
+   stat $?
+fi 
+
 
