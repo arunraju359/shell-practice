@@ -57,7 +57,7 @@ else
 fi 
 
 echo -n "Copying the context file :"
-cp context.xml /tmp/context.xml  &>> $LOG
+cp context.xml /tmp/context.xml  &>> $LOGS
 stat $?
 
 
