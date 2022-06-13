@@ -91,6 +91,7 @@ stat $?
 
 echo -n "Injecting he schema : "
 mysql <  /tmp/studentapp.sql
+stat $?
 
 echo -n "Injecting the context file : "
 sed  -i  -e "s/DUMMYUSER/$1/" -e "s/DUMMYPASSWORD/$2/" /tmp/context.xml
