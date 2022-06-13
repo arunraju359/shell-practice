@@ -97,6 +97,23 @@ sed  -i  -e "s/DUMMYUSER/$1/" -e "s/DUMMYPASSWORD/$2/" /tmp/context.xml
 cp /tmp/context.xml conf/context.xml
 stat $?
 
+echo -n "Starting Tomcat: "
+sh bin/startup.sh  &>> $LOGS
+stat $?
+
+echo -n "Checking Application Availability : "
+sleep 5
+curl localhost:8080/$FUSER 
+if [ $? -eq 0 ]; then 
+   echo -e "\e[32m AVailable \e[0m" 
+else 
+   echo -e "\e[31m Not yet available. Please check the catalina logs \e[0m" 
+   stat $?
+fi 
+echo -e " ********************************* \e[32m $FUSER Stack Completed \e[0m ********************************* "
+
+
+
 
 
 
