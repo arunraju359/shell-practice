@@ -4,6 +4,8 @@ LOGS=/tmp/stack.logs
 INDEX_URL="https://devops-cloudcareers.s3.ap-south-1.amazonaws.com/index.html"
 FUSER=student
 APACHE_TOMCAT="https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.81/bin/apache-tomcat-8.5.81.tar.gz"
+WAR_URL="https://devops-cloudcareers.s3.ap-south-1.amazonaws.com/student.war"
+JAR_URL="https://devops-cloudcareers.s3.ap-south-1.amazonaws.com/mysql-connector.jar"
 
 
 if [ "$ID" -ne 0 ]; then
@@ -55,6 +57,17 @@ cd /home/$FUSER
 wget $APACHE_TOMCAT &>> $LOGS
 tar -xf /home/$FUSER/apache-tomcat-8.5.81.tar.gz &>> $LOGS
 chown -R $FUSER:$FUSER apache-tomcat-8.5.81 &>> $LOGS
+stat $?
+
+echo -n "Download the war file : "
+cd apache-tomcat-8.5.81
+wget $WAR_URL -o webapps/student.war >>$LOGS
+chown $FUSER:$FUSER webapps/student.war &>> $LOGS
+stat $?
+
+echo -n "Download the jar or JDBC connector : "
+wget $JAR_URL &>> $LOGS
+chown $FUSER:$FUSER /mysql-connector.jar &>> $LOGS
 stat $?
 
 
