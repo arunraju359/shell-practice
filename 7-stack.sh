@@ -66,7 +66,7 @@ chown $FUSER:$FUSER webapps/student.war &>> $LOGS
 stat $?
 
 echo -n "Download the jar or JDBC connector : "
-wget $JAR_URL &>> $LOGS
+wget $JAR_URL -o /lib/mysql-connector.jar &>> $LOGS
 chown $FUSER:$FUSER /lib/mysql-connector.jar &>> $LOGS
 stat $?
 
