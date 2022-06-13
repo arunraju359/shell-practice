@@ -67,7 +67,7 @@ stat $?
 
 echo -n "Download the jar or JDBC connector : "
 wget $JAR_URL &>> $LOGS
-chown $FUSER:$FUSER lib/mysql-connector.jar &>> $LOGS
+chown $FUSER:$FUSER /lib/mysql-connector.jar &>> $LOGS
 stat $?
 
 
