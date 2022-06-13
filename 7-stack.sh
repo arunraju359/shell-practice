@@ -84,7 +84,7 @@ wget $SCHEMA -o /tmp/studentapp.sql &>> $LOGS
 stat $?
 
 echo -n "Installing & Starting Mariadb: "
-curl -sS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | sudo bash -s -- --mariadb-server-version="mariadb-10.3" &>> $LOGS
+yum install mariadb-server -y &>> $LOGS
 systemctl enable mariadb  &>> $LOGS
 systemctl start  mariadb  &>> $LOGS
 stat $?
