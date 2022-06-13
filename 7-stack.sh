@@ -56,6 +56,11 @@ else
    stat $?
 fi 
 
+echo -n "Copying the context file :"
+cp context.xml /tmp/context.xml  &>> $LOG
+stat $?
+
+
 echo -n "Downloading the Tomcat : "
 cd /home/$FUSER
 wget $APACHE_TOMCAT &>> $LOGS
@@ -86,6 +91,12 @@ stat $?
 
 echo -n "Injecting he schema : "
 mysql <  /tmp/studentapp.sql
+
+echo -n "Injecting the context file : "
+sed  -i  -e "s/DUMMYUSER/$1/" -e "s/DUMMYPASSWORD/$2/" /tmp/context.xml
+cp /tmp/context.xml conf/context.xml
+stat $?
+
 
 
 
