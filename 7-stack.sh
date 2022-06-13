@@ -104,7 +104,7 @@ stat $?
 
 echo -n "Checking Application Availability : "
 sleep 5
-curl localhost:8080/$FUSER 
+curl localhost:8080/$FUSER &>> $LOGS
 if [ $? -eq 0 ]; then 
    echo -e "\e[32m AVailable \e[0m" 
 else 
