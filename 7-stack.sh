@@ -52,7 +52,9 @@ fi
 
 echo -n "Downloading the Tomcat"
 cd /home/$FUSER
-wget $APACHE_TOMCAT && tar -xf apache-tomcat-8.5.77.tar.gz
+wget $APACHE_TOMCAT 
+tar -xf /home/$FUSER/apache-tomcat-8.5.77.tar.gz
+chown -R $FUSER:$FUSER apache-tomcat-8.5.77
 stat $?
 
 
