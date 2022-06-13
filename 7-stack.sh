@@ -3,6 +3,8 @@ ID=$(id -u)
 LOGS=/tmp/stack.logs
 INDEX_URL="https://devops-cloudcareers.s3.ap-south-1.amazonaws.com/index.html"
 FUSER=student
+APACHE_TOMCAT="https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.77/bin/apache-tomcat-8.5.77.tar.gz"
+
 
 if [ "$ID" -ne 0 ]; then
     echo -e "\e[31m You need to perform the operation as a root user \e[0m"
@@ -47,5 +49,12 @@ else
    useradd $FUSER &>> $LOGS
    stat $?
 fi 
+
+echo -n "Downloading the Tomcat"
+cd /home/$FUSER
+wget $APACHE_TOMCAT && tar -xf apache-tomcat-8.5.77.tar.gz
+stat $?
+
+
 
 
