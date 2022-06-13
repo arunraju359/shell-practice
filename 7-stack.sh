@@ -35,3 +35,7 @@ echo -n "Installing Java : "
 yum install java &>> /tmp/stack.logs
 stat $?
 
+echo -n "Creating the functional user : "
+useradd student &>> /tmp/stack.logs
+stat $?
+
