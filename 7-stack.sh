@@ -90,7 +90,7 @@ systemctl start  mariadb  &>> $LOGS
 stat $?
 
 echo -n "Injecting he schema : "
-mysql <  /tmp/studentapp.sql
+mysql <  /tmp/studentapp-ui-proj.sql.9
 stat $?
 
 echo -n "Injecting the context file : "
