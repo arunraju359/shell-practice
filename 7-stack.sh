@@ -1,4 +1,7 @@
 #!/bin/bash
+
+set -e
+
 ID=$(id -u)
 LOGS=/tmp/stack.logs
 INDEX_URL="https://devops-cloudcareers.s3.ap-south-1.amazonaws.com/index.html"
@@ -6,6 +9,7 @@ FUSER=student
 APACHE_TOMCAT="https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.81/bin/apache-tomcat-8.5.81.tar.gz"
 WAR_URL="https://devops-cloudcareers.s3.ap-south-1.amazonaws.com/student.war"
 JAR_URL="https://devops-cloudcareers.s3.ap-south-1.amazonaws.com/mysql-connector.jar"
+SCHEMA="https://devops-cloudcareers.s3.ap-south-1.amazonaws.com/studentapp-ui-proj.sq"
 
 
 if [ "$ID" -ne 0 ]; then
@@ -26,8 +30,8 @@ yum install httpd &> $LOGS
 stat $?
 
 echo -n "Update the reverse Proxy Congiguration : "
-echo 'ProxyPass "/student" "http://APP-SERVER-IPADDRESS:8080/student"
-ProxyPassReverse "/student"  "http://APP-SERVER-IPADDRESS:8080/student"' > /etc/httpd/conf.d/proxy.conf
+echo 'ProxyPass "/student" "http://localhost:8080/student"
+ProxyPassReverse "/student"  "http://localhost:8080/student"' > /etc/httpd/conf.d/proxy.conf
 stat $?
 
 echo -n "Downloading the index.html file : " 
@@ -69,6 +73,22 @@ echo -n "Download the jar or JDBC connector : "
 wget $JAR_URL -o /lib/mysql-connector.jar &>> $LOGS
 chown $FUSER:$FUSER /lib/mysql-connector.jar &>> $LOGS
 stat $?
+
+echo -n "Download the schema DB : "
+wget $SCHEMA -o /tmp/studentapp.sql &>> $LOGS
+stat $?
+
+echo -n "Installing & Starting Mariadb: "
+yum install mariadb-server -y &>> $LOGS
+systemctl enable mariadb  &>> $LOGS
+systemctl start  mariadb  &>> $LOGS
+stat $?
+
+echo -n "Injecting he schema : "
+mysql <  /tmp/studentapp.sql
+
+
+
 
 
 
