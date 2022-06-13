@@ -1,7 +1,7 @@
 #!/bin/bash
 ID=$(id -u)
 if ["$ID" -ne 0]; then
-    echo "\e[32m You need to perform the operation as a root user \e[0m"
+    echo -e "\e[32m You need to perform the operation as a root user \e[0m"
     exit 1
 fi
 yum install httpd &> /tmp/stack.logs
