@@ -70,7 +70,7 @@ stat $?
 
 echo -n "Download the war file : "
 cd apache-tomcat-8.5.81
-wget $WAR_URL -o webapps/student.war >>$LOGS
+wget $WAR_URL -o webapps/student.war &>> $LOGS
 chown $FUSER:$FUSER webapps/student.war &>> $LOGS
 stat $?
 
