@@ -50,7 +50,7 @@ else
    stat $?
 fi 
 
-echo -n "Downloading the Tomcat"
+echo -n "Downloading the Tomcat : "
 cd /home/$FUSER
 wget $APACHE_TOMCAT &>> $LOGS
 tar -xf /home/$FUSER/apache-tomcat-8.5.81.tar.gz &>> $LOGS
