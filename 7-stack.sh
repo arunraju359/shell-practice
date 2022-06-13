@@ -3,7 +3,7 @@ ID=$(id -u)
 LOGS=/tmp/stack.logs
 INDEX_URL="https://devops-cloudcareers.s3.ap-south-1.amazonaws.com/index.html"
 FUSER=student
-APACHE_TOMCAT="https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.77/bin/apache-tomcat-8.5.77.tar.gz"
+APACHE_TOMCAT="https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.81/bin/apache-tomcat-8.5.81.tar.gz"
 
 
 if [ "$ID" -ne 0 ]; then
