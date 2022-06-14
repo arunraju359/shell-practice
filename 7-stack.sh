@@ -4,7 +4,7 @@
 
 ID=$(id -u)
 LOGS=/tmp/stack.logs
-APACHE_VERSION="8.5.78"
+APACHE_VERSION="8.5.81"
 INDEX_URL="https://devops-cloudcareers.s3.ap-south-1.amazonaws.com/index.html"
 FUSER=student
 APACHE_TOMCAT="https://dlcdn.apache.org/tomcat/tomcat-8/v$APACHE_VERSION/bin/apache-tomcat-$APACHE_VERSION.tar.gz"
