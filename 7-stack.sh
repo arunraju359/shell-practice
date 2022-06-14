@@ -31,8 +31,8 @@ yum install httpd &> $LOGS
 stat $?
 
 echo -n "Update the reverse Proxy Congiguration : "
-echo 'ProxyPass "/student" "http://localhost:8080/student"
-ProxyPassReverse "/student"  "http://localhost:8080/student"' > /etc/httpd/conf.d/proxy.conf
+echo 'ProxyPass "/student" "http://172.31.25.19:8080/student"
+ProxyPassReverse "/student"  "http://172.31.25.19:8080/student"' > /etc/httpd/conf.d/proxy.conf
 stat $?
 
 echo -n "Downloading the index.html file : " 
