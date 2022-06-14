@@ -1,6 +1,6 @@
 #!/bin/bash
 
-
+set -e
 
 ID=$(id -u)
 LOGS=/tmp/stack.logs
