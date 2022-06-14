@@ -4,9 +4,10 @@
 
 ID=$(id -u)
 LOGS=/tmp/stack.logs
+APACHE_VERSION="8.5.78"
 INDEX_URL="https://devops-cloudcareers.s3.ap-south-1.amazonaws.com/index.html"
 FUSER=student
-APACHE_TOMCAT="https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.81/bin/apache-tomcat-8.5.81.tar.gz"
+APACHE_TOMCAT="https://dlcdn.apache.org/tomcat/tomcat-8/v$APACHE_VERSION/bin/apache-tomcat-$APACHE_VERSION.tar.gz"
 WAR_URL="https://devops-cloudcareers.s3.ap-south-1.amazonaws.com/student.war"
 JAR_URL="https://devops-cloudcareers.s3.ap-south-1.amazonaws.com/mysql-connector.jar"
 SCHEMA="https://devops-cloudcareers.s3.ap-south-1.amazonaws.com/studentapp-ui-proj.sql"
@@ -64,8 +65,8 @@ stat $?
 echo -n "Downloading the Tomcat : "
 cd /home/$FUSER
 wget $APACHE_TOMCAT &>> $LOGS
-tar -xf /home/$FUSER/apache-tomcat-8.5.81.tar.gz &>> $LOGS
-chown -R $FUSER:$FUSER apache-tomcat-8.5.81 &>> $LOGS
+tar -xf /home/$FUSER/apache-tomcat-$APACHE_VERSION.tar.gz &>> $LOGS
+chown -R $FUSER:$FUSER apache-tomcat-$APACHE_VERSION &>> $LOGS
 stat $?
 
 echo -n "Download the war file : "
