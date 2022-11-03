@@ -1,3 +1,4 @@
 #!/bin/bash
-echo -n "HelloWorld"
-echo "Hi"
+echo "Printing text with newline"
+echo -n "Printing text without newline"
+echo -e "\nRemoving \t backslash \t characters\n"
